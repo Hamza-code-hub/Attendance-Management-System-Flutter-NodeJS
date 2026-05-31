@@ -88,7 +88,7 @@ class _EmployeeRequestsScreenState
     try {
       final token = ref.read(authProvider).accessToken ?? '';
       final res = await http.get(
-        Uri.parse('$ServerConfig.apiBase/attendance/check-date/$ds'),
+        Uri.parse('${ServerConfig.apiBase}/attendance/check-date/$ds'),
         headers: {'Authorization': 'Bearer $token'},
       );
       if (res.statusCode == 200) {
@@ -129,7 +129,7 @@ class _EmployeeRequestsScreenState
         if (needsCheckin)  'requestedCheckinTime':  dt.toUtc().toIso8601String(),
         if (needsCheckout) 'requestedCheckoutTime': dt.toUtc().toIso8601String(),
       };
-      final res = await http.post(Uri.parse('$ServerConfig.apiBase/adjustments/request'),
+      final res = await http.post(Uri.parse('${ServerConfig.apiBase}/adjustments/request'),
           headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer $token'},
           body: jsonEncode(body));
       final rb = jsonDecode(res.body) as Map;
@@ -175,7 +175,7 @@ class _EmployeeRequestsScreenState
     setState(() => _submitting = true);
     try {
       final token = ref.read(authProvider).accessToken ?? '';
-      final res = await http.post(Uri.parse('$ServerConfig.apiBase/adjustments/request'),
+      final res = await http.post(Uri.parse('${ServerConfig.apiBase}/adjustments/request'),
           headers: {'Content-Type': 'application/json', 'Authorization': 'Bearer $token'},
           body: jsonEncode({
             'adjustmentType': 'TIME_ADJUSTMENT',

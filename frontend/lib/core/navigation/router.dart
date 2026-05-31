@@ -1467,7 +1467,7 @@ class _AttendanceDashboardState extends ConsumerState<AttendanceDashboard>
                 if (t != null) checkoutIso = DateTime(today.year, today.month, today.day, t.hour, t.minute).toIso8601String();
               }
               final res = await http.post(
-                Uri.parse('$ServerConfig.apiBase/adjustments/request'),
+                Uri.parse('${ServerConfig.apiBase}/adjustments/request'),
                 headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'},
                 body: jsonEncode({
                   'adjustmentType': corrType,
@@ -1660,7 +1660,7 @@ class _AttendanceDashboardState extends ConsumerState<AttendanceDashboard>
             try {
               final token = ref.read(authProvider).accessToken ?? '';
               final res = await http.post(
-                Uri.parse('$ServerConfig.apiBase/overtime/request'),
+                Uri.parse('${ServerConfig.apiBase}/overtime/request'),
                 headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'},
                 body: jsonEncode({
                   'requestDate': DateFormat('yyyy-MM-dd').format(selectedDate),
@@ -1848,7 +1848,7 @@ class _AttendanceDashboardState extends ConsumerState<AttendanceDashboard>
               if (t != null) checkoutIso = DateTime(d.year, d.month, d.day, t.hour, t.minute).toIso8601String();
             }
             final res = await http.post(
-              Uri.parse('$ServerConfig.apiBase/adjustments/request'),
+              Uri.parse('${ServerConfig.apiBase}/adjustments/request'),
               headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'},
               body: jsonEncode({
                 'adjustmentType': adjType,
@@ -4333,7 +4333,7 @@ class _DataMgrScreenState extends ConsumerState<_DataMgrScreen> {
 
   Future<void> _fetchEmployees() async {
     try {
-      final r = await http.get(Uri.parse('$ServerConfig.apiBase/employees'), headers: _hdrs);
+      final r = await http.get(Uri.parse('${ServerConfig.apiBase}/employees'), headers: _hdrs);
       final b = jsonDecode(r.body) as Map<String, dynamic>;
       if (r.statusCode == 200 && b['success'] == true) {
         final raw = b['data'];
@@ -4348,7 +4348,7 @@ class _DataMgrScreenState extends ConsumerState<_DataMgrScreen> {
     if (uid == null) { setState(() { _logs = []; _selected = emp; }); return; }
     setState(() { _loadingLogs = true; _selected = emp; _error = null; });
     try {
-      final r = await http.get(Uri.parse('$ServerConfig.apiBase/attendance/records/$uid'), headers: _hdrs);
+      final r = await http.get(Uri.parse('${ServerConfig.apiBase}/attendance/records/$uid'), headers: _hdrs);
       final b = jsonDecode(r.body) as Map<String, dynamic>;
       if (r.statusCode == 200 && b['success'] == true) {
         setState(() { _logs = (b['data'] as List).map((x) => Map<String, dynamic>.from(x as Map)).toList(); _loadingLogs = false; });
@@ -4357,7 +4357,7 @@ class _DataMgrScreenState extends ConsumerState<_DataMgrScreen> {
   }
 
   Future<void> _delete(String id) async {
-    await http.delete(Uri.parse('$ServerConfig.apiBase/attendance/records/$id'), headers: _hdrs);
+    await http.delete(Uri.parse('${ServerConfig.apiBase}/attendance/records/$id'), headers: _hdrs);
     if (_selected != null) _fetchLogs(_selected!);
   }
 
@@ -4400,7 +4400,7 @@ class _DataMgrScreenState extends ConsumerState<_DataMgrScreen> {
                 if (ciCtrl.text.trim().isNotEmpty) 'checkInTime': ciCtrl.text.trim(),
                 if (coCtrl.text.trim().isNotEmpty) 'checkOutTime': coCtrl.text.trim(),
               };
-              final res = await http.put(Uri.parse('$ServerConfig.apiBase/attendance/records/${rec['id']}'), headers: _hdrs, body: jsonEncode(body));
+              final res = await http.put(Uri.parse('${ServerConfig.apiBase}/attendance/records/${rec['id']}'), headers: _hdrs, body: jsonEncode(body));
               if (res.statusCode == 200 && ctx.mounted) { Navigator.pop(ctx); _fetchLogs(_selected!); }
               else ss(() => saving = false);
             },

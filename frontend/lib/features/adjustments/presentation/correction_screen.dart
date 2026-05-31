@@ -82,7 +82,7 @@ class _CorrectionRequestScreenState
       final token = ref.read(authProvider).accessToken ?? '';
       final dateStr = _formatDate(_date);
       final resp = await http.get(
-        Uri.parse('$ServerConfig.apiBase/attendance/check-date/$dateStr'),
+        Uri.parse('${ServerConfig.apiBase}/attendance/check-date/$dateStr'),
         headers: {'Authorization': 'Bearer $token'},
       );
       if (!mounted) return;
@@ -202,7 +202,7 @@ class _CorrectionRequestScreenState
       if (checkoutDt != null) body['requestedCheckoutTime'] = checkoutDt;
 
       final response = await http.post(
-        Uri.parse('$ServerConfig.apiBase/adjustments/request'),
+        Uri.parse('${ServerConfig.apiBase}/adjustments/request'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',

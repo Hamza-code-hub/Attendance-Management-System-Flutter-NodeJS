@@ -59,11 +59,11 @@ class ApprovalsNotifier extends StateNotifier<ApprovalsState> {
     state = state.copyWith(isLoading: true, error: null);
     try {
       final otResponse = await http.get(
-        Uri.parse('$ServerConfig.apiBase/overtime/pending'),
+        Uri.parse('${ServerConfig.apiBase}/overtime/pending'),
         headers: _getHeaders(),
       );
       final adjResponse = await http.get(
-        Uri.parse('$ServerConfig.apiBase/adjustments/pending'),
+        Uri.parse('${ServerConfig.apiBase}/adjustments/pending'),
         headers: _getHeaders(),
       );
 
@@ -100,7 +100,7 @@ class ApprovalsNotifier extends StateNotifier<ApprovalsState> {
     state = state.copyWith(isLoading: true, error: null);
     try {
       final response = await http.post(
-        Uri.parse('$ServerConfig.apiBase/overtime/review/$id'),
+        Uri.parse('${ServerConfig.apiBase}/overtime/review/$id'),
         headers: _getHeaders(),
         body: jsonEncode({
           'status': status,
@@ -132,7 +132,7 @@ class ApprovalsNotifier extends StateNotifier<ApprovalsState> {
     state = state.copyWith(isLoading: true, error: null);
     try {
       final response = await http.post(
-        Uri.parse('$ServerConfig.apiBase/adjustments/review/$id'),
+        Uri.parse('${ServerConfig.apiBase}/adjustments/review/$id'),
         headers: _getHeaders(),
         body: jsonEncode({
           'status': status,
