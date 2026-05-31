@@ -50,7 +50,10 @@ class _SplashAppState extends State<_SplashApp> {
         debugShowCheckedModeBanner: false,
         color: const Color(0xFF0A1628),
         home: const _SplashScreen(),
-        onUnknownRoute: (_) => MaterialPageRoute<void>(
+        // onGenerateRoute handles any deep-link URL the browser passes as the
+        // initial route (e.g. /attendance on refresh). It runs before Flutter
+        // logs "Could not navigate to initial route", suppressing the warning.
+        onGenerateRoute: (_) => MaterialPageRoute<void>(
           builder: (_) => const _SplashScreen(),
         ),
       );
