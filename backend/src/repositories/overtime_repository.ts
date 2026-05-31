@@ -98,7 +98,7 @@ export class OvertimeRepository {
       SELECT o.*, u.username, e.first_name, e.last_name, e.department_id
       FROM overtime_requests o
       JOIN users u ON u.id = o.user_id
-      JOIN employees e ON e.id = u.employee_id
+      LEFT JOIN employees e ON e.id = u.employee_id
       WHERE o.status = 'PENDING' ${scopeWhere} ${roleWhere}
       ORDER BY o.created_at ASC
     `;

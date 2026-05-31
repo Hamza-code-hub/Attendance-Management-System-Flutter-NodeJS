@@ -119,11 +119,13 @@ export class AdjustmentRepository {
       roleWhere = `AND (a.submitted_by_role IS NULL OR a.submitted_by_role IN (${placeholders}))`;
     }
 
+    // LEFT JOIN so requests from users without an employee profile (e.g. Admin/Manager-only
+    // accounts) are still visible — INNER JOIN would silently exclude them.
     const query = `
       SELECT a.*, u.username, e.first_name, e.last_name, e.department_id
       FROM adjustment_requests a
       JOIN users u ON u.id = a.user_id
-      JOIN employees e ON e.id = u.employee_id
+      LEFT JOIN employees e ON e.id = u.employee_id
       WHERE a.status = 'PENDING' ${stageWhere} ${scopeWhere} ${roleWhere}
       ORDER BY a.created_at ASC
     `;
