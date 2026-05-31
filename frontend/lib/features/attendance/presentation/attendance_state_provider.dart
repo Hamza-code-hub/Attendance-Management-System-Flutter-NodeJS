@@ -81,7 +81,12 @@ class AttendanceStateNotifier extends StateNotifier<TodayAttendanceState> {
   final Ref _ref;
   String get _baseUrl => '${ServerConfig.apiBase}/attendance';
   String get _uid => _ref.read(authProvider).user?.id.toString() ?? '0';
-  String get _cacheKey => 'att_today_$_uid';
+  // Include date so yesterday's CHECKED_OUT never loads as today's state
+  String get _cacheKey {
+    final d = DateTime.now();
+    final date = '${d.year}-${d.month.toString().padLeft(2,'0')}-${d.day.toString().padLeft(2,'0')}';
+    return 'att_today_${_uid}_$date';
+  }
 
   AttendanceStateNotifier(this._ref) : super(TodayAttendanceState.initial()) {
     fetchToday();
@@ -336,11 +341,13 @@ class HistoryNotifier extends StateNotifier<HistoryState> {
 }
 
 // ── Global providers ───────────────────────────────────────────────────────
+// autoDispose: state is destroyed when the dashboard unmounts (e.g. on logout).
+// This prevents a previous user's CHECKED_OUT from showing for the next login.
 
 final attendanceStateProvider =
-    StateNotifierProvider<AttendanceStateNotifier, TodayAttendanceState>(
+    StateNotifierProvider.autoDispose<AttendanceStateNotifier, TodayAttendanceState>(
         (ref) => AttendanceStateNotifier(ref));
 
 final historyProvider =
-    StateNotifierProvider<HistoryNotifier, HistoryState>(
+    StateNotifierProvider.autoDispose<HistoryNotifier, HistoryState>(
         (ref) => HistoryNotifier(ref));
