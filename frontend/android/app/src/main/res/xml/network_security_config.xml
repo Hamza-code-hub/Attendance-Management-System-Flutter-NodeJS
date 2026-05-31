@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--
+      Allow HTTP for any host — the server address is user-configurable at runtime
+      (LAN or public IP). HTTPS is recommended for internet use; HTTP is acceptable
+      on a trusted office LAN.
+    -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>

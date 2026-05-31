@@ -1,0 +1,24 @@
+{
+  "system": {
+    "name": "Attendance Management System",
+    "version": "1.0.0",
+    "environment": "local-office"
+  },
+  "office": {
+    "name": "Headquarters",
+    "subnet": "192.168.1.0/24",
+    "allowed_ip_ranges": [
+      "192.168.1.1-192.168.1.254",
+      "127.0.0.1"
+    ],
+    "operating_hours": {
+      "start": "09:00",
+      "end": "18:00",
+      "grace_period_minutes": 15
+    }
+  },
+  "security": {
+    "enforce_office_ip_only": true,
+    "allow_public_access": false
+  }
+}

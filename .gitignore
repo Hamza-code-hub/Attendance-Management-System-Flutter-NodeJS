@@ -1,0 +1,54 @@
+# ============================================================
+# CyberZeus AMS — Root .gitignore
+# ============================================================
+
+# ── Node.js / Backend ────────────────────────────────────────
+backend/node_modules/
+backend/dist/
+backend/logs/
+backend/dev_output.log
+backend/dev_error.log
+backend/.env
+backend/.tmp/
+*.log
+
+# ── Database files ───────────────────────────────────────────
+backend/*.db
+backend/*.db.bak
+backend/*.db.*
+
+# ── Flutter / Frontend ───────────────────────────────────────
+frontend/.dart_tool/
+frontend/build/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.pub-cache/
+frontend/.pub/
+frontend/coverage/
+
+# ── Android build artifacts ──────────────────────────────────
+frontend/android/.gradle/
+frontend/android/.kotlin/
+frontend/android/app/debug/
+frontend/android/app/profile/
+frontend/android/app/release/
+frontend/android/local.properties
+hs_err_pid*.log
+replay_pid*.log
+
+# ── Android signing (keep these backed up separately) ────────
+frontend/android/app/cyberzeus-release.jks
+frontend/android/key.properties
+
+# ── IDEs & OS ────────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+
+# ── Claude Code session memory (not for repo) ────────────────
+.claude/

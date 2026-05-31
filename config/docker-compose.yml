@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: attendance_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: attendance_admin
+      POSTGRES_PASSWORD: office_secure_password_2026
+      POSTGRES_DB: attendance_management
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - attendance_net
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  attendance_net:
+    driver: bridge

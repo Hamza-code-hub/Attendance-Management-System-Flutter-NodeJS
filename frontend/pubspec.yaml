@@ -1,0 +1,63 @@
+name: attendance_frontend_web
+description: A clean, modular Flutter Web presentation layer for the office Attendance Management System.
+version: 1.0.0+1
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # Navigation & Routing
+  go_router: ^12.0.0
+
+  # State Management (Proposed)
+  flutter_riverpod: ^2.4.9
+
+  # Network & API
+  http: ^1.1.0
+
+  # Local Config / Storage
+  shared_preferences: ^2.2.2
+
+  # image_picker removed: objective_c native hook crashes Dart VM on Windows (Flutter 3.11.x bug)
+
+  # Cross-platform file saving (Windows/Android/desktop)
+  path_provider: ^2.1.2
+
+  # Formatting & Parsing
+  intl: ^0.19.0
+
+  # Icons
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/cyberzeus_logo.png"
+  adaptive_icon_background: "#0A1628"
+  adaptive_icon_foreground: "assets/images/cyberzeus_logo.png"
+  min_sdk_android: 21
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/cyberzeus_logo.png
+
+  # Reserved for modern typography fonts
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: assets/fonts/Inter-Regular.ttf
+  #       - asset: assets/fonts/Inter-Bold.ttf
+  #         weight: 700
