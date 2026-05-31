@@ -213,33 +213,15 @@ class LoginScreen extends ConsumerStatefulWidget {
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _serverUrlController = TextEditingController();
   bool _rememberMe = true;
   bool _obscure = true;
-  bool _showServer = false;
-  bool _savingServer = false;
   final _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _serverUrlController.text = ServerConfig.baseUrl;
-  }
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _serverUrlController.dispose();
     super.dispose();
-  }
-
-  Future<void> _saveServerUrl() async {
-    final url = _serverUrlController.text.trim();
-    if (url.isEmpty) return;
-    setState(() => _savingServer = true);
-    await ServerConfig.save(url);
-    setState(() { _savingServer = false; _showServer = false; });
   }
 
   void _submit() async {
@@ -350,8 +332,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               if (url.isEmpty) return;
               await ServerConfig.save(url);
               if (ctx.mounted) Navigator.pop(ctx);
-              _serverUrlController.text = ServerConfig.baseUrl;
-              setState(() {});
               // Auto-retry login with the new URL
               _submit();
             },
@@ -549,7 +529,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          Text('Remember local session',
+                          Text('Remember',
                             style: TextStyle(
                               color: isDark ? AppTheme.darkTextSub : AppTheme.lightTextSub,
                               fontSize: 13,
@@ -557,76 +537,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                         ],
                       ),
-
-                      const SizedBox(height: 10),
-
-                      // Server URL config
-                      GestureDetector(
-                        onTap: () => setState(() => _showServer = !_showServer),
-                        child: Row(children: [
-                          Icon(Icons.dns_outlined,
-                            size: 13,
-                            color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted),
-                          const SizedBox(width: 6),
-                          Expanded(
-                            child: Text(
-                              'Server: ${ServerConfig.baseUrl}',
-                              style: TextStyle(
-                                color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted,
-                                fontSize: 11.5,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Icon(
-                            _showServer ? Icons.expand_less : Icons.expand_more,
-                            size: 16,
-                            color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted,
-                          ),
-                        ]),
-                      ),
-                      if (_showServer) ...[
-                        const SizedBox(height: 8),
-                        Row(children: [
-                          Expanded(
-                            child: TextField(
-                              controller: _serverUrlController,
-                              style: TextStyle(
-                                color: isDark ? AppTheme.darkText : AppTheme.lightText,
-                                fontSize: 13,
-                              ),
-                              decoration: _inputDec(Icons.link_rounded, 'e.g. http://192.168.1.5:5000', isDark).copyWith(
-                                hintText: 'http://host:port',
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          SizedBox(
-                            height: 40,
-                            child: ElevatedButton(
-                              onPressed: _savingServer ? null : _saveServerUrl,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppTheme.accent,
-                                foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(horizontal: 14),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                              ),
-                              child: _savingServer
-                                  ? const SizedBox(width: 14, height: 14, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
-                                  : const Text('Save', style: TextStyle(fontSize: 13)),
-                            ),
-                          ),
-                        ]),
-                        const SizedBox(height: 4),
-                        Text(
-                          'Requires office WiFi to connect',
-                          style: TextStyle(
-                            color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted,
-                            fontSize: 10.5,
-                          ),
-                        ),
-                      ],
 
                       // Error banner
                       if (authState.error != null) ...[
@@ -689,15 +599,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: const Color(0xFF3B82F6).withOpacity(0.18)),
                         ),
-                        child: Row(children: [
-                          const Icon(Icons.security_rounded, color: Color(0xFF60A5FA), size: 14),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              'Connecting to ${ServerConfig.baseUrl}',
-                              style: const TextStyle(color: Color(0xFF60A5FA), fontSize: 11.5),
-                            ),
-                          ),
+                        child: const Row(children: [
+                          Icon(Icons.wifi_rounded, color: Color(0xFF60A5FA), size: 14),
+                          SizedBox(width: 8),
+                          Text('Requires office WiFi to connect',
+                            style: TextStyle(color: Color(0xFF60A5FA), fontSize: 11.5)),
                         ]),
                       ),
                     ],
