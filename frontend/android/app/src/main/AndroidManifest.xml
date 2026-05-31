@@ -28,6 +28,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- Disable Impeller: Mali-G52 (Helio G85) has Vulkan font rendering bugs
+             that cause all Icon widgets to show as tofu boxes. Skia is stable. -->
+        <meta-data
+            android:name="io.flutter.embedding.android.EnableImpeller"
+            android:value="false" />
     </application>
     <queries>
         <intent>

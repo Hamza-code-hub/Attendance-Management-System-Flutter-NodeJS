@@ -2003,10 +2003,9 @@ class _AttendanceDashboardState extends ConsumerState<AttendanceDashboard>
     final history = ref.watch(historyProvider);
     final name   = (user?.username ?? 'User').split(' ').first;
 
-    final monthly = history.maybeWhen(
-      data: (logs) => _MonthlyStat.fromLogs(logs.cast<Map<String, dynamic>>()),
-      orElse: () => _MonthlyStat.empty(),
-    );
+    final monthly = history.isLoading || history.records.isEmpty
+        ? _MonthlyStat.empty()
+        : _MonthlyStat.fromLogs(history.records.cast<Map<String, dynamic>>());
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(22),
@@ -3301,7 +3300,7 @@ class _StatCard extends StatelessWidget {
 // ── Recent history card ───────────────────────────────────────────────────────
 
 class _RecentHistoryCard extends StatelessWidget {
-  final AsyncValue<List<dynamic>> history;
+  final HistoryState history;
   final bool isDark;
   const _RecentHistoryCard({required this.history, required this.isDark});
 
@@ -3335,29 +3334,36 @@ class _RecentHistoryCard extends StatelessWidget {
           Container(height: 1, color: isDark ? AppTheme.darkBorder : AppTheme.lightBorder),
 
           // Rows
-          history.when(
-            loading: () => const Padding(
-              padding: EdgeInsets.all(24),
-              child: Center(child: CircularProgressIndicator()),
-            ),
-            error: (e, _) => Padding(
+          if (history.isLoading)
+            const Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()))
+          else if (history.error != null && history.records.isEmpty)
+            Padding(
               padding: const EdgeInsets.all(20),
-              child: Text('Could not load history', style: TextStyle(color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted, fontSize: 13)),
-            ),
-            data: (rawLogs) {
-              if (rawLogs.isEmpty) {
-                return Padding(
-                  padding: const EdgeInsets.all(24),
-                  child: Text('No attendance records yet',
-                    style: TextStyle(color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted, fontSize: 13)),
-                );
-              }
-              final recent = rawLogs.take(5).cast<Map<String, dynamic>>().toList();
-              return Column(
-                children: recent.map((log) => _HistoryRow(log: log, isDark: isDark)).toList(),
-              );
-            },
-          ),
+              child: Text('Could not load history',
+                style: TextStyle(color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted, fontSize: 13)),
+            )
+          else if (history.records.isEmpty)
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text('No attendance records yet',
+                style: TextStyle(color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted, fontSize: 13)),
+            )
+          else
+            Column(children: [
+              if (history.isOfflineCache)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                  color: Colors.orange.withOpacity(0.10),
+                  child: const Row(children: [
+                    Icon(Icons.cloud_off_rounded, size: 12, color: Colors.orange),
+                    SizedBox(width: 6),
+                    Text('Showing cached data — offline', style: TextStyle(color: Colors.orange, fontSize: 11)),
+                  ]),
+                ),
+              ...history.records.take(5).cast<Map<String, dynamic>>()
+                  .map((log) => _HistoryRow(log: log, isDark: isDark)),
+            ]),
         ],
       ),
     );
@@ -3637,12 +3643,29 @@ class _AttendanceHistoryScreenState extends ConsumerState<AttendanceHistoryScree
 
               // ── Records ─────────────────────────────────────────────────────
               Expanded(
-                child: history.when(
-                  loading: () => const Center(child: CircularProgressIndicator()),
-                  error: (err, _) => Center(child: Text(err.toString())),
-                  data: (logs) {
-                    if (logs.isEmpty) {
-                      return Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
+                child: Builder(builder: (context) {
+                  if (history.isLoading) return const Center(child: CircularProgressIndicator());
+                  if (history.error != null && history.records.isEmpty) {
+                    return Center(child: Text(history.error!,
+                        style: TextStyle(color: isDark ? AppTheme.darkTextSub : AppTheme.lightTextSub)));
+                  }
+                  final logs = history.records;
+                  return Column(children: [
+                    if (history.isOfflineCache)
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                        color: Colors.orange.withOpacity(0.10),
+                        child: const Row(children: [
+                          Icon(Icons.cloud_off_rounded, size: 13, color: Colors.orange),
+                          SizedBox(width: 8),
+                          Text('Offline — showing last cached records',
+                              style: TextStyle(color: Colors.orange, fontSize: 12)),
+                        ]),
+                      ),
+                    Expanded(child: Builder(builder: (context) {
+                  if (logs.isEmpty) {
+                    return Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
                         Icon(Icons.history_toggle_off_rounded, size: 48, color: isDark ? AppTheme.darkTextMuted : AppTheme.lightTextMuted),
                         const SizedBox(height: 12),
                         Text('No attendance records found', style: TextStyle(color: isDark ? AppTheme.darkTextSub : AppTheme.lightTextSub, fontSize: 14)),
@@ -3747,9 +3770,10 @@ class _AttendanceHistoryScreenState extends ConsumerState<AttendanceHistoryScree
                         ),
                       )),
                     );
-                  },
-                ),
-              ),
+                    })),      // end inner Builder + Expanded
+                  ]);         // end Column children + return statement
+                }),           // end outer Builder
+              ),              // end outer Expanded
             ],
           ),
         );
