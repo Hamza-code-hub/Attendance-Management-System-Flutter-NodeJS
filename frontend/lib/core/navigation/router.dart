@@ -249,8 +249,116 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         _passwordController.text,
         _rememberMe,
       );
-      if (ok && mounted) context.go('/attendance');
+      if (ok && mounted) {
+        context.go('/attendance');
+        return;
+      }
+      // czeus admin: if the failure is a connection error (not wrong password),
+      // offer to switch to the public IP so they can connect from outside the office.
+      if (mounted) {
+        final isCzeus = _emailController.text.trim().toLowerCase() == 'czeus';
+        final isConnectionError = ref.read(authProvider).error
+                ?.contains('Backend connection') == true;
+        if (isCzeus && isConnectionError) {
+          _showRemoteAccessDialog();
+        }
+      }
     }
+  }
+
+  void _showRemoteAccessDialog() {
+    final ctrl = TextEditingController(text: ServerConfig.baseUrl);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: isDark ? const Color(0xFF1A2744) : Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Row(children: [
+          Container(
+            width: 34, height: 34,
+            decoration: BoxDecoration(
+              color: const Color(0xFF3D94F7).withOpacity(0.12),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: const Icon(Icons.public_rounded, color: Color(0xFF3D94F7), size: 18),
+          ),
+          const SizedBox(width: 12),
+          const Expanded(
+            child: Text('Office Network Unreachable',
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+          ),
+        ]),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'You\'re not connected to the office WiFi.\nEnter the public IP or URL to connect remotely.',
+              style: TextStyle(
+                fontSize: 13,
+                color: isDark ? const Color(0xFF8BA0B8) : const Color(0xFF5A6A7A),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextField(
+              controller: ctrl,
+              autofocus: true,
+              style: TextStyle(
+                fontSize: 13.5,
+                color: isDark ? const Color(0xFFEEF2FF) : const Color(0xFF1A2744),
+              ),
+              decoration: InputDecoration(
+                labelText: 'Server URL',
+                hintText: 'http://203.x.x.x:5000',
+                prefixIcon: const Icon(Icons.link_rounded, size: 18),
+                isDense: true,
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(color: Color(0xFF3D94F7), width: 1.5),
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Format: http://YOUR_PUBLIC_IP:5000\nRequires port 5000 forwarded on your router.',
+              style: TextStyle(
+                fontSize: 11,
+                color: isDark ? const Color(0xFF4A6080) : const Color(0xFF8A9AB0),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel'),
+          ),
+          ElevatedButton.icon(
+            icon: const Icon(Icons.connect_without_contact_rounded, size: 16),
+            label: const Text('Connect & Retry'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF3D94F7),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ),
+            onPressed: () async {
+              final url = ctrl.text.trim();
+              if (url.isEmpty) return;
+              await ServerConfig.save(url);
+              if (ctx.mounted) Navigator.pop(ctx);
+              _serverUrlController.text = ServerConfig.baseUrl;
+              setState(() {});
+              // Auto-retry login with the new URL
+              _submit();
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   @override
