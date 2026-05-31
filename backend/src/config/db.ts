@@ -308,5 +308,9 @@ conn.run(`ALTER TABLE adjustment_requests ADD COLUMN submitted_by_role TEXT DEFA
 conn.run(`ALTER TABLE overtime_requests ADD COLUMN submitted_by_role TEXT DEFAULT 'Employee'`, (err: any) => {
   if (err && !err.message.includes('duplicate column name')) logger.warn(`[Migration] submitted_by_role ot: ${err.message}`);
 });
+// Migration: add late_checkout_request_id to link auto-created LATE_CHECKOUT adjustments
+conn.run(`ALTER TABLE attendance_logs ADD COLUMN late_checkout_request_id TEXT`, (err: any) => {
+  if (err && !err.message.includes('duplicate column name')) logger.warn(`[Migration] late_checkout_request_id: ${err.message}`);
+});
 
 

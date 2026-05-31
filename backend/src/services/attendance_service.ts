@@ -1,5 +1,7 @@
 import { AttendanceRepository, DBAttendanceLog } from '../repositories/attendance_repository';
+import { AdjustmentRepository } from '../repositories/adjustment_repository';
 import { AppError } from '../middleware/error_handler';
+import { db } from '../config/db';
 import { logger } from '../config/logger';
 
 export class AttendanceService {
@@ -186,6 +188,40 @@ export class AttendanceService {
 
     logger.info(`[Attendance Core] User ${userId} checking out. Gross: ${grossMinutes}m | Breaks: ${breakMinutes}m | Net: ${netWorkedMinutes}m | OT: ${overtimeMinutes}m`);
     await this.attendanceRepo.updateCheckOut(todayRecord.id, userId, netWorkedMinutes, overtimeMinutes);
+
+    // Auto-create a LATE_CHECKOUT approval request when employee checks out after shift end
+    if (shift && overtimeMinutes > 0) {
+      try {
+        const existing = await db.query(
+          `SELECT id FROM adjustment_requests WHERE attendance_id = ? AND adjustment_type = 'LATE_CHECKOUT'`,
+          [todayRecord.id]
+        );
+        if (existing.rows.length === 0) {
+          const adjustmentRepo = new AdjustmentRepository();
+          const shiftEndDisplay = shift.endTime ?? '18:00';
+          const reqId = await adjustmentRepo.create({
+            userId,
+            attendanceId: todayRecord.id,
+            adjustmentType: 'LATE_CHECKOUT',
+            requestedMinutes: overtimeMinutes,
+            requestedCheckinTime: null,
+            requestedCheckoutTime: null,
+            reason: `Late checkout: ${overtimeMinutes} min after shift end (${shiftEndDisplay}). Pending manager → HR approval.`,
+            managerApprovedAt: null,
+            managerApprovedBy: null,
+          });
+          // Link the request back to the attendance record
+          await db.query(
+            `UPDATE attendance_logs SET late_checkout_request_id = ? WHERE id = ?`,
+            [reqId, todayRecord.id]
+          );
+          logger.info(`[Attendance] Auto-created LATE_CHECKOUT request ${reqId} for user ${userId} — ${overtimeMinutes}m overtime`);
+        }
+      } catch (err: any) {
+        // Non-fatal: checkout already recorded, just log the issue
+        logger.error(`[Attendance] Failed to auto-create LATE_CHECKOUT request for user ${userId}: ${err.message}`);
+      }
+    }
   }
 
   /**

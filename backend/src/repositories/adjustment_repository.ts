@@ -5,7 +5,7 @@ export interface DBAdjustmentRequest {
   id: string;
   userId: number;
   attendanceId: string | null;
-  adjustmentType: 'MISSED_CHECKIN' | 'MISSED_CHECKOUT' | 'LATE_COMPENSATION' | 'EARLY_LEAVE' | 'CUSTOM' | 'TIME_ADJUSTMENT';
+  adjustmentType: 'MISSED_CHECKIN' | 'MISSED_CHECKOUT' | 'LATE_COMPENSATION' | 'EARLY_LEAVE' | 'CUSTOM' | 'TIME_ADJUSTMENT' | 'LATE_CHECKOUT';
   requestedMinutes: number;
   approvedMinutes: number;
   requestedCheckinTime: string | null;

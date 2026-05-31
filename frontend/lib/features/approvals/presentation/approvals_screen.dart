@@ -436,6 +436,7 @@ class _ApprovalsScreenState extends ConsumerState<ApprovalsScreen>
       case 'LATE_COMPENSATION': return 'Late Compensation';
       case 'EARLY_LEAVE':     return 'Early Leave';
       case 'TIME_ADJUSTMENT': return 'Time Adjustment';
+      case 'LATE_CHECKOUT':  return 'Late Checkout';
       default: return type.replaceAll('_', ' ');
     }
   }
@@ -614,18 +615,21 @@ class _ApprovalsScreenState extends ConsumerState<ApprovalsScreen>
                     ? (atManagerStage ? 'Awaiting Manager' : 'Ready for HR')
                     : null;
 
+                final isLateCheckout = req.adjustmentType == 'LATE_CHECKOUT';
                 return _ApprovalCard(
                   isDark: isDark,
-                  accentColor: AppTheme.statusPending,
-                  icon: Icons.edit_calendar_outlined,
+                  accentColor: isLateCheckout ? Colors.orange : AppTheme.statusPending,
+                  icon: isLateCheckout ? Icons.schedule_rounded : Icons.edit_calendar_outlined,
                   employeeName: '${req.firstName ?? ''} ${req.lastName ?? ''}'.trim(),
                   username: req.username ?? '',
                   dateLabel: dateLabel,
                   typeLabel: _adjTypeLabel(req.adjustmentType),
-                  details: req.requestedCheckinTime != null || req.requestedCheckoutTime != null
-                      ? 'In: ${req.requestedCheckinTime != null ? DateFormat('hh:mm a').format(DateTime.parse(req.requestedCheckinTime!).toLocal()) : '--:--'}'
-                        '  ·  Out: ${req.requestedCheckoutTime != null ? DateFormat('hh:mm a').format(DateTime.parse(req.requestedCheckoutTime!).toLocal()) : '--:--'}'
-                      : '${req.requestedMinutes} minutes',
+                  details: isLateCheckout
+                      ? '${req.requestedMinutes} min overtime after shift end'
+                      : req.requestedCheckinTime != null || req.requestedCheckoutTime != null
+                          ? 'In: ${req.requestedCheckinTime != null ? DateFormat('hh:mm a').format(DateTime.parse(req.requestedCheckinTime!).toLocal()) : '--:--'}'
+                            '  ·  Out: ${req.requestedCheckoutTime != null ? DateFormat('hh:mm a').format(DateTime.parse(req.requestedCheckoutTime!).toLocal()) : '--:--'}'
+                          : '${req.requestedMinutes} minutes',
                   reason: req.reason,
                   stageBadge: stageBadge,
                   actionLabel: actionLabel,

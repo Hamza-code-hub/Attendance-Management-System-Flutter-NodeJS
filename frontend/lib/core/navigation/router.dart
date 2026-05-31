@@ -3377,32 +3377,70 @@ class _HistoryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status = (log['status'] ?? '') as String;
+    final status   = (log['status'] ?? '') as String;
     final statusColor = AppTheme.statusColor(status);
-    final inTime  = _fmtTime(log['checkInTime'] as String?);
-    final outTime = _fmtTime(log['checkOutTime'] as String?);
-    final worked  = (log['totalWorkedMinutes'] ?? 0) as int;
-    final workedStr = worked > 0 ? '${worked ~/ 60}h ${worked % 60}m' : '--';
+    final inTime   = _fmtTime(log['checkInTime'] as String?);
+    final outTime  = _fmtTime(log['checkOutTime'] as String?);
+    final worked   = (log['totalWorkedMinutes'] ?? 0) as int;
+    final overtime = (log['overtimeMinutes'] ?? 0) as int;
+    final workedStr = worked > 0
+        ? '${worked ~/ 60}h ${(worked % 60).toString().padLeft(2, '0')}m'
+        : '--';
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: isDark ? AppTheme.darkBorder : AppTheme.lightBorder)),
+        border: Border(bottom: BorderSide(
+            color: isDark ? AppTheme.darkBorder : AppTheme.lightBorder)),
       ),
-      child: Row(children: [
-        Container(width: 8, height: 8, margin: const EdgeInsets.only(right: 10),
-          decoration: BoxDecoration(shape: BoxShape.circle, color: statusColor)),
-        SizedBox(
-          width: 90,
-          child: Text(log['date'] ?? '', style: TextStyle(color: isDark ? AppTheme.darkTextSub : AppTheme.lightTextSub, fontSize: 12.5)),
+      child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        // Status dot
+        Container(
+          width: 8, height: 8,
+          margin: const EdgeInsets.only(right: 10),
+          decoration: BoxDecoration(shape: BoxShape.circle, color: statusColor),
         ),
+        // Left — date (line 1) + in→out times (line 2)
         Expanded(
-          child: Text('$inTime → $outTime',
-            style: TextStyle(fontFamily: 'monospace', color: isDark ? AppTheme.darkText : AppTheme.lightText, fontSize: 12)),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(log['date'] ?? '--',
+              style: TextStyle(
+                color: isDark ? AppTheme.darkTextSub : AppTheme.lightTextSub,
+                fontSize: 11.5, fontWeight: FontWeight.w500)),
+            const SizedBox(height: 3),
+            Row(children: [
+              Text('$inTime  →  $outTime',
+                style: TextStyle(
+                  fontFamily: 'monospace',
+                  color: isDark ? AppTheme.darkText : AppTheme.lightText,
+                  fontSize: 12.5)),
+              if (overtime > 0) ...[
+                const SizedBox(width: 6),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text('+${overtime}m OT',
+                    style: const TextStyle(color: Colors.orange, fontSize: 10,
+                        fontWeight: FontWeight.w600)),
+                ),
+              ],
+            ]),
+          ]),
         ),
-        Text(workedStr, style: TextStyle(color: isDark ? AppTheme.darkText : AppTheme.lightText, fontWeight: FontWeight.w500, fontSize: 12.5)),
-        const SizedBox(width: 10),
-        AppTheme.statusBadge(status, statusColor, fontSize: 10.5),
+        const SizedBox(width: 8),
+        // Right — worked hours (line 1) + status badge (line 2)
+        Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          Text(workedStr,
+            style: TextStyle(
+              color: AppTheme.statusPresent,
+              fontWeight: FontWeight.w700,
+              fontSize: 12.5)),
+          const SizedBox(height: 4),
+          AppTheme.statusBadge(status, statusColor, fontSize: 10),
+        ]),
       ]),
     );
   }
