@@ -229,6 +229,15 @@ The Flutter Android interface focuses on fast employee attendance actions.
 
 <table>
 <tr>
+<td align="center">
+
+<img src="frontend/assets/images/ams4.jpeg"
+  alt="Attendance Management System Splash Screen"
+  width="235"/>
+
+### Application Startup
+
+</td>
 
 <td align="center">
 
@@ -237,16 +246,6 @@ The Flutter Android interface focuses on fast employee attendance actions.
   width="235"/>
 
 ### Secure Login
-
-</td>
-
-<td align="center">
-
-<img src="frontend/assets/images/ams4.jpeg"
-  alt="Attendance Management System Splash Screen"
-  width="235"/>
-
-### Application Startup
 
 </td>
 
