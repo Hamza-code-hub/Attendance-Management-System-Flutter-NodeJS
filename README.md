@@ -2,66 +2,66 @@
 
 # 🕒 Attendance Management System
 
-### Flutter + Python Full-Stack Workforce & Attendance Platform
+### Flutter + Node.js / TypeScript Full-Stack Workforce Platform
 
 <p>
 A modern, responsive <strong>employee attendance and workforce management system</strong>
-built for <strong>mobile, web and desktop experiences</strong> using
-<strong>Flutter</strong> with a <strong>Python REST API backend</strong>.
+built with <strong>Flutter</strong> for Android, Web and Windows experiences
+and a <strong>Node.js + TypeScript REST API</strong> backend.
 </p>
 
 <br>
 
 ![Flutter](https://img.shields.io/badge/Flutter-Cross_Platform-02569B?style=for-the-badge\&logo=flutter\&logoColor=white)
-![Python](https://img.shields.io/badge/Python-Backend-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
-![REST API](https://img.shields.io/badge/API-REST-7C3AED?style=for-the-badge)
-![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge\&logo=sqlite\&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge\&logo=node.js\&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-REST_API-3178C6?style=for-the-badge\&logo=typescript\&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge\&logo=sqlite\&logoColor=white)
 
 <br>
 
 ![Android](https://img.shields.io/badge/Android-Supported-3DDC84?style=flat-square\&logo=android\&logoColor=white)
 ![Web](https://img.shields.io/badge/Web-Supported-4285F4?style=flat-square\&logo=googlechrome\&logoColor=white)
-![Desktop](https://img.shields.io/badge/Desktop-Responsive-0078D4?style=flat-square\&logo=windows\&logoColor=white)
+![Windows](https://img.shields.io/badge/Windows-Supported-0078D4?style=flat-square\&logo=windows\&logoColor=white)
 ![JWT](https://img.shields.io/badge/Auth-JWT-F59E0B?style=flat-square)
-![Responsive](https://img.shields.io/badge/UI-Responsive-06B6D4?style=flat-square)
+![Riverpod](https://img.shields.io/badge/State-Riverpod-7C3AED?style=flat-square)
 
 <br>
 
-### `Attendance` • `Employees` • `Managers` • `HR` • `Reports` • `Flutter` • `Python`
+### `Attendance` • `Employees` • `Managers` • `HR` • `Reports` • `Flutter` • `Node.js`
 
 </div>
 
 ---
 
-## ✨ Product Preview
+# ✨ Product Preview
 
-<table>
-<tr>
-<td width="40%" align="center">
-
-### 📱 Employee Mobile
-
-<img src="assets/readme/employee-mobile.jpeg"
-  alt="Attendance Management System Mobile Employee Dashboard"
-  width="300"/>
-
-</td>
-
-<td width="60%" align="center">
-
-### 💻 Employee Web / Desktop
-
-<img src="assets/readme/employee-desktop.jpeg"
-  alt="Attendance Management System Desktop Employee Dashboard"
-  width="100%"/>
-
-</td>
-</tr>
-</table>
+## 💻 Desktop / Web Employee Dashboard
 
 <div align="center">
 
-**One attendance platform. Multiple roles. Multiple devices.**
+<img src="frontend/assets/images/ams1.jpeg"
+  alt="Attendance Management System Desktop Employee Dashboard"
+  width="100%"/>
+
+</div>
+
+<br>
+
+## 📱 Mobile Employee Experience
+
+<div align="center">
+
+<img src="frontend/assets/images/ams3.jpeg"
+  alt="Attendance Management System Mobile Employee Dashboard"
+  width="340"/>
+
+</div>
+
+<br>
+
+<div align="center">
+
+### One attendance platform — optimized for mobile, web and desktop.
 
 </div>
 
@@ -69,176 +69,54 @@ built for <strong>mobile, web and desktop experiences</strong> using
 
 # 🌟 Overview
 
-The **Attendance Management System** is a full-stack workforce platform designed to centralize employee attendance, shift monitoring, working hours, break tracking, request approvals and HR reporting.
+The **Attendance Management System** is a full-stack workforce-management platform designed to simplify and centralize:
 
-The application provides a responsive Flutter interface that adapts the same business workflow to different environments:
+* Employee attendance
+* Clock-in / clock-out
+* Break tracking
+* Working hours
+* Shift management
+* Attendance corrections
+* Overtime requests
+* Manager approvals
+* HR monitoring
+* Employee management
+* Administrative configuration
+* Attendance reporting
+* CSV / Excel exports
+
+The application combines a responsive **Flutter frontend** with a modular **Node.js + Express + TypeScript backend**.
 
 ```text
                     Attendance Platform
                            │
-              ┌────────────┴────────────┐
-              │                         │
-              ▼                         ▼
-        📱 Mobile App             💻 Web / Desktop
-              │                         │
-              └────────────┬────────────┘
+             ┌─────────────┴─────────────┐
+             │                           │
+             ▼                           ▼
+       📱 Flutter Mobile           💻 Flutter Web
+             │                           │
+             └─────────────┬─────────────┘
                            │
                            ▼
-                    Python REST API
-                           │
-           ┌───────────────┼───────────────┐
-           │               │               │
-           ▼               ▼               ▼
-      Authentication   Attendance      HR / Reports
-           │               │               │
-           └───────────────┼───────────────┘
+                 🔌 REST API Backend
                            │
                            ▼
-                         Database
-```
-
-The platform supports complete attendance workflows for:
-
-* 👤 Employees
-* 👔 Managers
-* 🧑‍💼 HR teams
-* ⚙️ Administrators
-
----
-
-# 🎨 Responsive User Experience
-
-The system was designed as more than a desktop HR dashboard.
-
-It provides separate responsive experiences optimized for both employees and administrative users.
-
-## 📱 Mobile Experience
-
-The mobile application provides employees with fast access to the actions they need throughout the workday.
-
-<table>
-<tr>
-<td align="center">
-
-<img src="assets/readme/login-mobile.jpeg"
-  alt="Attendance System Mobile Login"
-  width="260"/>
-
-**Secure Login**
-
-</td>
-
-<td align="center">
-
-<img src="assets/readme/splash-mobile.jpeg"
-  alt="Attendance System Mobile Splash Screen"
-  width="260"/>
-
-**Application Startup**
-
-</td>
-
-<td align="center">
-
-<img src="assets/readme/employee-mobile.jpeg"
-  alt="Employee Mobile Attendance Dashboard"
-  width="260"/>
-
-**Employee Dashboard**
-
-</td>
-</tr>
-</table>
-
-### Mobile capabilities
-
-* Clock in
-* Clock out
-* Start / end break
-* View live shift information
-* Review monthly hours
-* Monitor days present
-* Track late arrivals
-* View attendance history
-* Submit attendance requests
-* Runtime server configuration
-
----
-
-# 💻 Desktop & Web Experience
-
-The web/desktop interface gives employees, managers and HR teams a wider operational workspace.
-
-<div align="center">
-
-<img src="assets/readme/employee-desktop.jpeg"
-  alt="Attendance Employee Desktop Dashboard"
-  width="100%"/>
-
-</div>
-
-The employee dashboard provides immediate visibility into:
-
-```text
-Current Time
-    +
-Attendance Status
-    +
-Assigned Shift
-    +
-Worked Hours
-    +
-Days Present
-    +
-Late Arrivals
-    +
-On-Time Attendance
-    +
-Recent Attendance
+              Node.js + TypeScript
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+          ▼                ▼                ▼
+    Authentication     Attendance      Reporting
+          │                │                │
+          └────────────────┼────────────────┘
+                           │
+                           ▼
+                       Database
 ```
 
 ---
 
-# 📊 HR Reports & Exports
-
-<div align="center">
-
-<img src="assets/readme/reports-desktop.jpeg"
-  alt="Attendance Management HR Reports and Exports Dashboard"
-  width="100%"/>
-
-</div>
-
-The HR reporting interface provides centralized access to multiple attendance datasets.
-
-### Available report categories
-
-* Attendance
-* Overtime
-* Adjustments
-* Late arrivals
-* Breaks
-* Monthly sheets
-
-### Reporting controls
-
-```text
-Date Range
-    +
-Department
-    +
-Attendance Status
-    +
-Report Type
-    ↓
-Filtered Workforce Data
-    ↓
-CSV / Excel Export
-```
-
----
-
-# 🚀 Key Features
+# 🚀 Core Features
 
 <table>
 <tr>
@@ -252,10 +130,11 @@ Employees can:
 * Check out
 * Start breaks
 * End breaks
-* View live status
-* Review attendance history
+* View current attendance status
+* Review working hours
+* View attendance history
 
-Attendance timestamps should be validated server-side.
+Attendance timestamps are processed by the backend rather than relying only on client-device time.
 
 </td>
 
@@ -263,14 +142,14 @@ Attendance timestamps should be validated server-side.
 
 ## 👥 Role-Based Access
 
-The platform supports dedicated workflows for:
+The system supports multiple organizational roles:
 
 * Employee
 * Manager
 * HR
 * Administrator
 
-Each role receives the tools relevant to its responsibilities.
+Each role receives dedicated navigation, functionality and permissions.
 
 </td>
 </tr>
@@ -284,27 +163,27 @@ Employees can submit:
 
 * Attendance corrections
 * Overtime requests
-* Missing-time requests
-* Time adjustments
+* Missing-time adjustments
+* Time correction requests
 
-Requests can then move through an approval workflow.
+Requests can then move through an approval process.
 
 </td>
 
 <td>
 
-## 📊 HR Reporting
+## 📊 Reporting
 
-HR users can review:
+HR and administrative users can access:
 
-* Employee attendance
-* Late arrivals
+* Attendance reports
 * Overtime
-* Break activity
-* Monthly records
-* Shift attendance
-
-with export functionality.
+* Adjustments
+* Late arrivals
+* Break reports
+* Monthly sheets
+* CSV exports
+* Excel exports
 
 </td>
 </tr>
@@ -314,27 +193,29 @@ with export functionality.
 
 ## 🕒 Shift Management
 
-Organizations can define:
+Organizations can configure:
 
-* Shift schedules
-* Start / end times
+* Working shifts
+* Shift start/end times
 * Grace periods
-* Department assignments
+* Departments
 * Attendance policies
 
 </td>
 
 <td>
 
-## 🔐 Authentication
+## 🔐 Authentication & Security
 
-The architecture supports:
+The backend architecture includes:
 
-* Secure login
 * JWT authentication
-* Role authorization
 * Protected API routes
-* Session handling
+* Authentication middleware
+* Rate limiting
+* Error handling
+* Role-based permissions
+* Audit-oriented architecture
 
 </td>
 </tr>
@@ -342,252 +223,384 @@ The architecture supports:
 
 ---
 
-# 👤 Employee Experience
+# 📱 Mobile Experience
 
-The employee dashboard is built around one primary question:
+The Flutter Android interface focuses on fast employee attendance actions.
 
-> **What is my attendance status right now?**
+<table>
+<tr>
 
-The interface surfaces the most relevant information immediately.
+<td align="center">
+
+<img src="frontend/assets/images/ams5.jpeg"
+  alt="Attendance Management System Login Screen"
+  width="235"/>
+
+### Secure Login
+
+</td>
+
+<td align="center">
+
+<img src="frontend/assets/images/ams4.jpeg"
+  alt="Attendance Management System Splash Screen"
+  width="235"/>
+
+### Application Startup
+
+</td>
+
+<td align="center">
+
+<img src="frontend/assets/images/ams3.jpeg"
+  alt="Attendance Management System Mobile Dashboard"
+  width="235"/>
+
+### Employee Dashboard
+
+</td>
+
+</tr>
+</table>
+
+### Mobile functionality
 
 ```text
-                EMPLOYEE DASHBOARD
-                       │
-          ┌────────────┼────────────┐
-          │            │            │
-          ▼            ▼            ▼
-       Status        Shift        Live Time
-          │
-          ▼
-     Check In / Out
-          │
-          ▼
-      Break Control
-          │
-     ┌────┴───────────────┐
-     ▼                    ▼
-Statistics          Attendance History
+Login
+  │
+  ▼
+Employee Dashboard
+  │
+  ├── Current Status
+  ├── Assigned Shift
+  ├── Clock In / Out
+  ├── Start / End Break
+  ├── Monthly Hours
+  ├── Days Present
+  ├── Late Arrivals
+  ├── On-Time Records
+  └── Recent Attendance
 ```
 
-### Employee features
+The interface is optimized for daily employee use where attendance actions need to be quick and obvious.
 
-* ✅ Real-time attendance status
-* ✅ Clock in / clock out
-* ✅ Start and end breaks
-* ✅ Assigned shift display
-* ✅ Hours worked
-* ✅ Days present
-* ✅ Late-arrival tracking
-* ✅ On-time attendance tracking
+---
+
+# 💻 Desktop / Web Experience
+
+The desktop experience provides more screen space for workforce statistics, records and administrative workflows.
+
+<div align="center">
+
+<img src="frontend/assets/images/ams1.jpeg"
+  alt="Desktop Attendance Employee Dashboard"
+  width="100%"/>
+
+</div>
+
+The desktop employee dashboard surfaces:
+
+| Information          | Purpose                        |
+| -------------------- | ------------------------------ |
+| 🕒 Current Time      | Live attendance context        |
+| 🟢 Attendance Status | Checked-in / checked-out state |
+| 📅 Assigned Shift    | Employee shift schedule        |
+| ⏱️ Worked Hours      | Current / monthly working time |
+| 📆 Days Present      | Monthly attendance count       |
+| ⚡ Late Arrivals      | Attendance exceptions          |
+| ✅ On-Time            | Punctuality indicator          |
+| 📋 Recent Attendance | Recent employee records        |
+
+---
+
+# 📊 HR Reports & Exports
+
+<div align="center">
+
+<img src="frontend/assets/images/ams2.jpeg"
+  alt="Attendance Management System HR Reports Dashboard"
+  width="100%"/>
+
+</div>
+
+The HR interface provides a centralized reporting workspace.
+
+### Available report categories
+
+```text
+Reports & Exports
+│
+├── Attendance
+├── Overtime
+├── Adjustments
+├── Late Arrivals
+├── Breaks
+└── Monthly Sheet
+```
+
+### Report filters
+
+HR users can filter records by:
+
+* Date range
+* Department
+* Attendance status
+* Report category
+
+and export results to:
+
+```text
+Excel
+CSV
+```
+
+---
+
+# 👤 Employee Role
+
+The employee experience focuses on personal attendance.
+
+### Features
+
+* ✅ Clock in
+* ✅ Clock out
+* ✅ Start break
+* ✅ End break
+* ✅ Current attendance status
+* ✅ Shift information
+* ✅ Worked-hour statistics
 * ✅ Attendance history
+* ✅ Late-arrival tracking
 * ✅ Request submission
 
 ---
 
-# 👔 Manager Experience
+# 👔 Manager Role
 
-Managers can move beyond personal attendance into team-level operations.
+Managers receive team-level functionality.
 
-### Manager capabilities
+### Features
 
-* Team attendance dashboard
-* Employee status monitoring
-* Pending request review
+* Team attendance monitoring
+* Employee status visibility
+* Team request review
 * Approve requests
 * Reject requests
-* Monitor team attendance
-* Review attendance exceptions
+* Attendance exception monitoring
 
 ---
 
-# 🧑‍💼 HR Experience
+# 🧑‍💼 HR Role
 
-The HR workspace is designed for organization-wide workforce monitoring.
+HR receives organization-level attendance management.
 
-```text
-                       HR WORKSPACE
-                            │
-            ┌───────────────┼───────────────┐
-            │               │               │
-            ▼               ▼               ▼
-     Live Attendance    Shift Monitor    Employees
-            │               │               │
-            └───────────────┼───────────────┘
-                            │
-                            ▼
-                     Reports & Exports
-                            │
-          ┌─────────────────┼─────────────────┐
-          ▼                 ▼                 ▼
-      Attendance        Overtime           Breaks
-          │                 │                 │
-          └─────────────────┼─────────────────┘
-                            ▼
-                       CSV / Excel
-```
+### Features
 
-### HR features
-
-* Live attendance monitoring
+* Live attendance
 * Shift monitoring
+* Employee setup
 * Employee directory
-* Department-level filtering
-* Attendance reports
-* Overtime reporting
-* Break reporting
-* Late-arrival reporting
+* Attendance reporting
+* Overtime reports
+* Adjustment reports
+* Break analysis
+* Late-arrival monitoring
 * Monthly attendance sheets
-* Request approvals
 * CSV export
 * Excel export
+* Approval workflows
 
 ---
 
-# ⚙️ Administrator Experience
+# ⚙️ Administrator Role
 
-Administrators manage the core configuration of the platform.
+Administrators manage the configuration and security of the system.
 
-### Administrative capabilities
+### Features
 
 * User accounts
 * Employee accounts
 * Departments
-* Roles
 * Shifts
 * Attendance settings
-* Grace periods
-* Organization configuration
-* Server settings
+* Grace-period configuration
+* Organization settings
+* Network settings
 * Audit logs
-* System health
+* API/system health monitoring
 
 ---
 
-# 🏗️ Full-Stack Architecture
+# 🏗️ Backend Architecture
 
-```mermaid
-flowchart LR
+The backend follows a modular service-oriented structure.
 
-A["📱 Flutter Mobile"] --> API
-B["💻 Flutter Web"] --> API
-C["🖥️ Desktop Experience"] --> API
-
-API["🐍 Python REST API"]
-
-API --> AUTH["🔐 Authentication"]
-API --> ATT["🕒 Attendance"]
-API --> SHIFT["📅 Shifts"]
-API --> REQ["📋 Requests"]
-API --> REPORT["📊 Reporting"]
-API --> ADMIN["⚙️ Administration"]
-
-AUTH --> DB["🗄️ Database"]
-ATT --> DB
-SHIFT --> DB
-REQ --> DB
-REPORT --> DB
-ADMIN --> DB
+```text
+HTTP Request
+      │
+      ▼
+    Routes
+      │
+      ▼
+ Controllers
+      │
+      ▼
+  Services
+      │
+      ▼
+Repositories
+      │
+      ▼
+   Database
 ```
+
+Cross-cutting concerns are handled through middleware and configuration modules.
+
+```text
+                Express Application
+                       │
+        ┌──────────────┼──────────────┐
+        │              │              │
+        ▼              ▼              ▼
+      Routes       Middleware       Config
+        │
+        ▼
+    Controllers
+        │
+        ▼
+     Services
+        │
+        ▼
+   Repositories
+        │
+        ▼
+     Database
+```
+
+---
+
+# 📁 Actual Repository Structure
+
+The project currently follows this structure:
+
+```text
+Attendance_System/
+│
+├── backend/
+│   │
+│   ├── src/
+│   │   │
+│   │   ├── config/
+│   │   │   └── Backend configuration
+│   │   │
+│   │   ├── controllers/
+│   │   │   └── HTTP request handlers
+│   │   │
+│   │   ├── middleware/
+│   │   │   ├── Authentication
+│   │   │   ├── Authorization
+│   │   │   ├── Rate limiting
+│   │   │   └── Error handling
+│   │   │
+│   │   ├── repositories/
+│   │   │   └── Data-access layer
+│   │   │
+│   │   ├── routes/
+│   │   │   └── Express routers
+│   │   │
+│   │   ├── services/
+│   │   │   └── Business logic
+│   │   │
+│   │   ├── utils/
+│   │   │   └── Shared backend utilities
+│   │   │
+│   │   ├── app.ts
+│   │   └── server.ts
+│   │
+│   ├── .env.example
+│   ├── .nvmrc
+│   ├── package-lock.json
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── config/
+│   └── Project / deployment configuration
+│
+├── database/
+│   └── Database-related files
+│
+├── docs/
+│   │
+│   ├── architecture_note.md
+│   ├── cyberzeus_app_preview.html
+│   ├── cyberzeus_logo_transparent.png
+│   └── additional project branding / documentation
+│
+├── frontend/
+│   │
+│   ├── android/
+│   │   └── Flutter Android platform
+│   │
+│   ├── assets/
+│   │   └── images/
+│   │       ├── ams1.jpeg
+│   │       ├── ams2.jpeg
+│   │       ├── ams3.jpeg
+│   │       ├── ams4.jpeg
+│   │       └── ams5.jpeg
+│   │
+│   ├── lib/
+│   │   └── Flutter / Dart application source
+│   │
+│   ├── test/
+│   │   └── Flutter tests
+│   │
+│   ├── web/
+│   │   └── Flutter Web platform
+│   │
+│   ├── windows/
+│   │   └── Flutter Windows platform
+│   │
+│   ├── .gitignore
+│   ├── .metadata
+│   ├── README.md
+│   ├── analysis_options.yaml
+│   ├── build_apk.ps1
+│   ├── pubspec.lock
+│   └── pubspec.yaml
+│
+└── README.md
+```
+
+> Some filenames inside `docs/` may contain additional branding assets not fully shown above. The tree reflects the structure visible in the current repository.
 
 ---
 
 # 🛠️ Technology Stack
 
-## Frontend
+## 🎨 Frontend
 
-| Technology             | Purpose                    |
-| ---------------------- | -------------------------- |
-| **Flutter**            | Cross-platform application |
-| **Dart**               | Application language       |
-| **Riverpod**           | State management           |
-| **GoRouter**           | Application routing        |
-| **Material 3**         | UI foundation              |
-| **Responsive Layouts** | Mobile / Web / Desktop UX  |
-
-## Backend
-
-| Technology   | Purpose                          |
-| ------------ | -------------------------------- |
-| **Python**   | Backend application language     |
-| **REST API** | Frontend/backend communication   |
-| **JWT**      | Authentication                   |
-| **SQLite**   | Local / small deployment storage |
-
-> If the current backend uses FastAPI, Flask or Django, add the exact framework here rather than simply writing “Python”.
+| Technology             | Purpose                           |
+| ---------------------- | --------------------------------- |
+| **Flutter 3.x**        | Cross-platform application        |
+| **Dart**               | Frontend programming language     |
+| **Riverpod 2.x**       | State management                  |
+| **GoRouter 12.x**      | Application routing               |
+| **Material 3**         | UI system                         |
+| **Responsive Layouts** | Mobile / Web / Windows experience |
 
 ---
 
-# 📁 Project Structure
+## ⚙️ Backend
 
-```text
-Attendance-Management-System/
-│
-├── backend/
-│   │
-│   ├── app/
-│   │   ├── api/
-│   │   │   └── API routes
-│   │   │
-│   │   ├── core/
-│   │   │   ├── configuration
-│   │   │   ├── authentication
-│   │   │   └── security
-│   │   │
-│   │   ├── models/
-│   │   │   └── database models
-│   │   │
-│   │   ├── schemas/
-│   │   │   └── request / response models
-│   │   │
-│   │   ├── services/
-│   │   │   └── business logic
-│   │   │
-│   │   ├── repositories/
-│   │   │   └── data-access layer
-│   │   │
-│   │   └── main.py
-│   │
-│   ├── requirements.txt
-│   └── .env.example
-│
-├── frontend/
-│   │
-│   ├── lib/
-│   │   ├── core/
-│   │   │   ├── config/
-│   │   │   ├── network/
-│   │   │   ├── router/
-│   │   │   ├── theme/
-│   │   │   └── utils/
-│   │   │
-│   │   ├── features/
-│   │   │   ├── authentication/
-│   │   │   ├── attendance/
-│   │   │   ├── dashboard/
-│   │   │   ├── employees/
-│   │   │   ├── requests/
-│   │   │   ├── reports/
-│   │   │   ├── shifts/
-│   │   │   └── administration/
-│   │   │
-│   │   └── main.dart
-│   │
-│   ├── assets/
-│   ├── android/
-│   ├── web/
-│   └── pubspec.yaml
-│
-├── assets/
-│   └── readme/
-│       ├── login-mobile.jpeg
-│       ├── splash-mobile.jpeg
-│       ├── employee-mobile.jpeg
-│       ├── employee-desktop.jpeg
-│       └── reports-desktop.jpeg
-│
-├── README.md
-└── .gitignore
-```
+| Technology     | Purpose                                 |
+| -------------- | --------------------------------------- |
+| **Node.js 20** | Backend runtime                         |
+| **TypeScript** | Type-safe server development            |
+| **Express.js** | REST API framework                      |
+| **JWT**        | Authentication                          |
+| **SQLite**     | Application database                    |
+| **Middleware** | Auth, validation, rate limiting, errors |
 
 ---
 
@@ -596,93 +609,161 @@ Attendance-Management-System/
 ```mermaid
 flowchart LR
 
-A["👤 Employee"] --> B["Check In"]
+EMP["👤 Employee"]
 
-B --> C["Working"]
+EMP --> IN["Check In"]
 
-C --> D["Start Break"]
-D --> E["On Break"]
-E --> F["End Break"]
+IN --> WORK["Working"]
 
-F --> C
+WORK --> BREAK["Start Break"]
 
-C --> G["Check Out"]
+BREAK --> ONBREAK["On Break"]
 
-G --> H["Attendance Record"]
+ONBREAK --> ENDBREAK["End Break"]
 
-H --> I["Reports"]
+ENDBREAK --> WORK
+
+WORK --> OUT["Check Out"]
+
+OUT --> RECORD["Attendance Record"]
+
+RECORD --> REPORT["Reports"]
 ```
-
-The backend should remain the authoritative source for attendance timestamps.
 
 ---
 
-# 📋 Request & Approval Flow
+# 📋 Request & Approval Workflow
 
 ```mermaid
 flowchart LR
 
 EMP["👤 Employee"]
 
-EMP --> R["Submit Request"]
+EMP --> REQ["Submit Request"]
 
-R --> MAN["👔 Manager"]
+REQ --> MAN["👔 Manager"]
 
 MAN -->|Approve| HR["🧑‍💼 HR"]
-MAN -->|Reject| REJ["❌ Rejected"]
+MAN -->|Reject| REJECT["❌ Rejected"]
 
-HR -->|Approve| APP["✅ Approved"]
-HR -->|Reject| REJ
+HR -->|Approve| APPROVED["✅ Approved"]
+HR -->|Reject| REJECT
 ```
 
-Typical requests include:
+Requests may include:
 
+* Attendance correction
 * Missing clock-in
 * Missing clock-out
-* Attendance correction
 * Overtime
 * Time adjustment
 
 ---
 
-# 🌐 Dynamic Server Configuration
+# 🌐 Runtime Server Configuration
 
-The mobile application can support runtime API configuration so the same build can connect to different deployments.
+The application allows the API/server address to be configured at runtime.
 
-| Environment          | Example API                      |
-| -------------------- | -------------------------------- |
-| 🏢 Office LAN        | `http://192.168.100.15:5000`     |
-| 🌍 Remote Server     | `https://attendance.example.com` |
-| 🤖 Android Emulator  | `http://10.0.2.2:5000`           |
-| 💻 Local Development | `http://127.0.0.1:5000`          |
+This is especially useful for office deployments because the same APK can connect to different servers without recompilation.
 
-This eliminates the need to rebuild the Flutter application each time the backend address changes.
+| Environment         | Example                          |
+| ------------------- | -------------------------------- |
+| 🏢 Office LAN       | `http://192.168.100.15:5000`     |
+| 🌍 Remote Server    | `https://attendance.example.com` |
+| 🤖 Android Emulator | `http://10.0.2.2:5000`           |
+| 💻 Localhost        | `http://127.0.0.1:5000`          |
+
+For internet-facing deployments, **HTTPS is strongly recommended**.
 
 ---
 
-# 🏢 Office Deployment
+# 🏢 Office Network Deployment
 
-A typical deployment can look like:
+The application's office-network model can look like:
 
 ```text
-                       OFFICE NETWORK
+                        OFFICE NETWORK
                               │
-            ┌─────────────────┼─────────────────┐
-            │                 │                 │
-            ▼                 ▼                 ▼
-      Employee Phones    Manager Devices     HR PCs
-            │                 │                 │
-            └─────────────────┼─────────────────┘
+          ┌───────────────────┼───────────────────┐
+          │                   │                   │
+          ▼                   ▼                   ▼
+    Employee Phones      Manager Devices       HR PCs
+          │                   │                   │
+          └───────────────────┼───────────────────┘
                               │
                               ▼
                          Office Wi-Fi
                               │
                               ▼
-                      Python API Server
+                   Node.js Attendance API
                               │
                               ▼
-                          Database
+                         SQLite Database
 ```
+
+---
+
+# 🔐 Authentication
+
+Authentication is based on JWT access and refresh tokens.
+
+```text
+Credentials
+    │
+    ▼
+Login Endpoint
+    │
+    ▼
+Authentication Service
+    │
+    ├── Access Token
+    │
+    └── Refresh Token
+```
+
+Protected API requests use:
+
+```http
+Authorization: Bearer <ACCESS_TOKEN>
+```
+
+---
+
+# 🔒 Security Architecture
+
+The application is structured around:
+
+```text
+JWT Authentication
+       +
+Role Authorization
+       +
+Server-Side Timestamps
+       +
+Rate Limiting
+       +
+Environment Secrets
+       +
+Error Handling
+       +
+Audit Logs
+       +
+Optional Network Restriction
+```
+
+For production deployment, additionally use:
+
+* HTTPS
+* Strong secrets
+* Secure password hashing
+* Reverse proxy
+* Firewall rules
+* Automated backups
+* Secret rotation
+* Dependency updates
+* Centralized logging
+* Monitoring
+* Account lockout / throttling where appropriate
 
 ---
 
@@ -690,98 +771,102 @@ A typical deployment can look like:
 
 ## Requirements
 
-### Backend
-
-```text
-Python 3.10+
-pip
-```
-
-### Frontend
-
-```text
-Flutter 3.x
-Dart
-Android Studio / VS Code
-```
-
-### General
-
-```text
-Git
-```
+| Tool           | Version               |
+| -------------- | --------------------- |
+| Node.js        | 20.x                  |
+| npm            | 10.x                  |
+| Flutter        | 3.x                   |
+| Dart           | Included with Flutter |
+| Java JDK       | 17                    |
+| Android Studio | Latest stable         |
+| Git            | Current               |
 
 ---
 
-## 1️⃣ Clone
+# 1️⃣ Clone Repository
 
 ```bash
-git clone https://github.com/Hamza-code-hub/Attendance-Management-System-Flutter-Python.git
+git clone https://github.com/Hamza-code-hub/Attendance-Management-System-Flutter-NodeJS.git
 
-cd Attendance-Management-System-Flutter-Python
+cd Attendance-Management-System-Flutter-NodeJS
 ```
+
+If your repository still has another GitHub name, use its current clone URL.
 
 ---
 
-# 🐍 Backend Setup
-
-Enter the backend:
+# 2️⃣ Backend Setup
 
 ```bash
 cd backend
 ```
 
-Create a virtual environment.
-
-### Windows
+Install dependencies:
 
 ```bash
-python -m venv .venv
-
-.venv\Scripts\activate
+npm install
 ```
+
+Create the environment file.
 
 ### Linux / macOS
 
 ```bash
-python3 -m venv .venv
-
-source .venv/bin/activate
+cp .env.example .env
 ```
 
-Install dependencies:
+### Windows PowerShell
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Update `.env` with secure values.
+
+Start development mode:
 
 ```bash
-pip install -r requirements.txt
+npm run dev
 ```
 
-Create environment configuration:
+Default API:
 
 ```text
-.env
+http://localhost:5000
 ```
-
-from:
-
-```text
-.env.example
-```
-
-Then start the API using the command appropriate for the framework used by the backend.
-
-For example, with FastAPI:
-
-```bash
-uvicorn app.main:app --reload --port 5000
-```
-
-> Use the actual backend command from your project if it differs.
 
 ---
 
-# 📱 Flutter Setup
+# 🏭 Backend Production
 
-Open another terminal:
+Compile TypeScript:
+
+```bash
+npm run build
+```
+
+Start production:
+
+```bash
+npm start
+```
+
+```text
+TypeScript Source
+       │
+       ▼
+ npm run build
+       │
+       ▼
+      dist/
+       │
+       ▼
+Node.js Production Server
+```
+
+---
+
+# 3️⃣ Flutter Setup
 
 ```bash
 cd frontend
@@ -793,13 +878,13 @@ Install packages:
 flutter pub get
 ```
 
-Check the environment:
+Check Flutter:
 
 ```bash
 flutter doctor
 ```
 
-View available devices:
+Check available devices:
 
 ```bash
 flutter devices
@@ -807,13 +892,13 @@ flutter devices
 
 ---
 
-# 🌐 Run Web Application
+# 🌐 Run Web Version
 
 ```bash
 flutter run -d chrome
 ```
 
-Build:
+Production web build:
 
 ```bash
 flutter build web --release
@@ -821,70 +906,53 @@ flutter build web --release
 
 ---
 
-# 📱 Run Android Application
+# 🪟 Run Windows Version
+
+```bash
+flutter run -d windows
+```
+
+Production build:
+
+```bash
+flutter build windows --release
+```
+
+---
+
+# 📱 Run Android Version
 
 ```bash
 flutter run
 ```
 
-Release APK:
+Build release APK:
 
 ```bash
 flutter clean
-
 flutter pub get
-
 flutter build apk --release
 ```
 
-Expected output:
+Output:
 
 ```text
 frontend/build/app/outputs/flutter-apk/app-release.apk
 ```
 
----
-
-# 🔐 Security Architecture
-
-The platform should follow a layered security approach:
+The repository also contains:
 
 ```text
-Authentication
-      +
-Role Authorization
-      +
-JWT Validation
-      +
-Server-Side Timestamps
-      +
-Rate Limiting
-      +
-Input Validation
-      +
-Environment Secrets
-      +
-Audit Logging
-      +
-HTTPS
+frontend/build_apk.ps1
 ```
 
-For production deployments:
-
-* Never hard-code secrets
-* Never commit `.env`
-* Never commit Android signing passwords
-* Use HTTPS
-* Use strong password hashing
-* Rotate secrets where appropriate
-* Enable request validation
-* Restrict administrative APIs
-* Monitor authentication events
-* Maintain audit records
+which can be used for the project's Windows-based APK build workflow if configured accordingly.
 
 ---
 
 # 🔑 Android Signing
+
+Production APKs should use a private signing key.
 
 Never commit:
 
@@ -894,7 +962,7 @@ Never commit:
 key.properties
 ```
 
-Recommended `.gitignore` entries:
+Recommended `.gitignore`:
 
 ```gitignore
 android/key.properties
@@ -902,73 +970,137 @@ android/app/*.jks
 android/app/*.keystore
 ```
 
-Generate a signing key only for your own production application identity.
+---
+
+# 📊 Reporting System
+
+The reporting workspace supports multiple workforce report types:
+
+```text
+                   Reports
+                      │
+       ┌──────────────┼──────────────┐
+       │              │              │
+       ▼              ▼              ▼
+  Attendance       Overtime     Adjustments
+       │              │              │
+       ├──────────────┼──────────────┤
+       │              │              │
+       ▼              ▼              ▼
+ Late Arrivals      Breaks       Monthly Sheet
+                      │
+                      ▼
+                 Export Data
+                  ┌───┴───┐
+                  ▼       ▼
+                Excel     CSV
+```
 
 ---
 
-# 📈 Dashboard Intelligence
+# ❤️ API Health
 
-The platform already demonstrates useful workforce metrics such as:
+The backend can expose:
 
-```text
-Total Hours Worked
-
-Days Present
-
-Late Arrivals
-
-On-Time Arrivals
-
-Current Shift
-
-Current Attendance Status
-
-Recent Attendance
+```http
+GET /api/health
 ```
 
-Future HR dashboards could additionally include:
+for deployment and monitoring checks.
+
+---
+
+# 👤 Initial Administrator
+
+If the current development database seeder creates:
 
 ```text
-Attendance Rate
+Username : admin
+Password : admin123
+```
 
-Absence Rate
+change the password immediately after initial setup.
 
-Average Arrival Time
+For a production system, replace permanent default credentials with a secure first-run account-creation process.
 
-Monthly Overtime
+---
 
-Department Performance
+# 🧪 Development Commands
 
-Shift Compliance
+## Backend
 
-Attendance Trends
+```bash
+npm run dev
+```
 
-Pending Requests
+```bash
+npm run build
+```
+
+```bash
+npm start
+```
+
+---
+
+## Flutter
+
+Analyze:
+
+```bash
+flutter analyze
+```
+
+Test:
+
+```bash
+flutter test
+```
+
+Format:
+
+```bash
+dart format .
+```
+
+Dependencies:
+
+```bash
+flutter pub get
+```
+
+Check packages:
+
+```bash
+flutter pub outdated
 ```
 
 ---
 
 # 🗺️ Roadmap
 
-## ✅ Attendance Core
+## ✅ Attendance
 
 * [x] Employee authentication
-* [x] Check in
-* [x] Check out
+* [x] Clock in
+* [x] Clock out
 * [x] Break tracking
 * [x] Shift display
 * [x] Attendance history
-* [x] Employee dashboard
-* [x] Mobile responsive interface
-* [x] Desktop responsive interface
+* [x] Server-managed timestamps
+* [x] Mobile employee dashboard
+* [x] Desktop employee dashboard
 
-## ✅ Management
+## ✅ Workforce Management
 
-* [x] Role-based dashboards
-* [x] Manager workflow
+* [x] Employee accounts
+* [x] Role-based interfaces
+* [x] Manager workflows
 * [x] HR interface
-* [x] Employee management
-* [x] Request workflow
+* [x] Employee setup
+* [x] Department support
+* [x] Shift management
+* [x] Request workflows
 
 ## ✅ Reporting
 
@@ -977,16 +1109,16 @@ Pending Requests
 * [x] Adjustment reports
 * [x] Late-arrival reports
 * [x] Break reports
-* [x] Monthly reporting
+* [x] Monthly sheet
 * [x] CSV export
 * [x] Excel export
 
-## 🚀 Future
+## 🚀 Future Development
 
 * [ ] QR attendance
 * [ ] NFC attendance
-* [ ] Biometric device integration
-* [ ] Face recognition
+* [ ] Biometric-device integration
+* [ ] Face-recognition integration
 * [ ] Geofencing
 * [ ] GPS field attendance
 * [ ] Push notifications
@@ -996,33 +1128,36 @@ Pending Requests
 * [ ] PostgreSQL
 * [ ] Docker deployment
 * [ ] CI/CD
-* [ ] Multi-organization support
 * [ ] Offline synchronization
+* [ ] Multi-organization support
 * [ ] Advanced workforce analytics
 
 ---
 
-# 🎯 Potential Use Cases
+# 🎯 Use Cases
 
-| Environment           | Use Case                          |
-| --------------------- | --------------------------------- |
-| 🏢 Offices            | Employee attendance               |
-| 💻 Software Companies | Team work-hour tracking           |
-| 🏭 Factories          | Shift attendance                  |
-| 🏫 Institutions       | Staff attendance                  |
-| 🏥 Organizations      | Administrative workforce tracking |
-| 🏪 Retail             | Shift management                  |
-| 🏗️ Field Teams       | Remote attendance workflows       |
+| Environment           | Application               |
+| --------------------- | ------------------------- |
+| 🏢 Offices            | Daily employee attendance |
+| 💻 Software Companies | Working-hour tracking     |
+| 🏭 Factories          | Shift attendance          |
+| 🏫 Institutions       | Staff attendance          |
+| 🏥 Organizations      | Administrative workforce  |
+| 🏪 Retail             | Shift management          |
+| 🏗️ Field Teams       | Attendance workflows      |
 
 ---
 
 # ⚠️ Production Considerations
 
-SQLite is useful for:
+SQLite is well suited to:
 
-* Development
-* Demonstrations
-* Small office deployments
+```text
+Development
+Small Deployments
+Internal Demonstrations
+Lightweight Office Systems
+```
 
 For larger deployments, consider:
 
@@ -1035,12 +1170,36 @@ HTTPS
      +
 Automated Backups
      +
+Process Management
+     +
 Monitoring
      +
 Centralized Logging
      +
-Container Deployment
+Docker
 ```
+
+---
+
+# 📜 License
+
+Choose the license according to how the repository will be distributed.
+
+### Open Source
+
+Possible options:
+
+* MIT
+* Apache-2.0
+* GPL-3.0
+
+### Organization / Internal Deployment
+
+```text
+Private / Proprietary
+```
+
+Avoid using company-specific copyright or licensing language if this repository is intended to be a reusable general attendance-management project.
 
 ---
 
@@ -1049,18 +1208,17 @@ Container Deployment
 Contributions are welcome in:
 
 * Flutter
-* Python
-* Backend APIs
+* Dart
+* Node.js
+* TypeScript
+* REST APIs
 * Attendance workflows
 * Reporting
 * UI / UX
-* Database design
 * Authentication
 * Testing
+* Databases
 * Deployment
-* HR functionality
-
-Example:
 
 ```bash
 git checkout -b feature/improvement
@@ -1072,25 +1230,7 @@ git commit -m "feat: add attendance improvement"
 git push origin feature/improvement
 ```
 
----
-
-# 📜 License
-
-Choose a license according to how you intend to distribute the application.
-
-Possible open-source licenses:
-
-```text
-MIT
-Apache-2.0
-GPL-3.0
-```
-
-For organization-specific deployments:
-
-```text
-Private / Proprietary
-```
+Then open a pull request.
 
 ---
 
@@ -1098,20 +1238,20 @@ Private / Proprietary
 
 # 🕒 Attendance Management System
 
-## Flutter × Python × Workforce Automation
+## Flutter × Node.js × TypeScript × Workforce Automation
 
 ### One Platform for Employees, Managers, HR & Administration
 
 <br>
 
 ![Flutter](https://img.shields.io/badge/Frontend-Flutter-02569B?style=flat-square\&logo=flutter\&logoColor=white)
-![Python](https://img.shields.io/badge/Backend-Python-3776AB?style=flat-square\&logo=python\&logoColor=white)
-![Android](https://img.shields.io/badge/Mobile-Android-3DDC84?style=flat-square\&logo=android\&logoColor=white)
-![Web](https://img.shields.io/badge/Desktop-Web-4285F4?style=flat-square\&logo=googlechrome\&logoColor=white)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?style=flat-square\&logo=node.js\&logoColor=white)
+![TypeScript](https://img.shields.io/badge/API-TypeScript-3178C6?style=flat-square\&logo=typescript\&logoColor=white)
+![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=flat-square\&logo=sqlite\&logoColor=white)
 
 <br>
 
-### 📱 Responsive • 🔐 Secure • 🕒 Real-Time • 📊 Report-Driven
+### 📱 Mobile • 💻 Web • 🪟 Windows • 🔐 Secure • 📊 Report-Driven
 
 <br>
 
